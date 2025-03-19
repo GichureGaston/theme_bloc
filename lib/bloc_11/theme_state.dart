@@ -1,15 +1,20 @@
 part of 'theme_bloc.dart';
 
-enum TodoStatus { initial, loading, success, failure }
+enum ThemeStatus { initial, loading, success, failure }
 
 @immutable
 final class ThemeState {
-  final ThemeData themeData;
+  final ThemeStatus status;
 
-  ThemeState({
-    required this.themeData,
+  final Exception? exception;
+  final AppTheme theme;
+
+  const ThemeState({
+    this.status = ThemeStatus.initial,
+    this.exception,
+    this.theme = AppTheme.Dark,
   }) : super();
+
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<dynamic> get props => [status, theme, exception];
 }
